@@ -10,6 +10,8 @@ exception NodeError of string
 let map f l = (List.map f l);;
 let foldl f a l = (List.fold_left f a l);;
 
+(* Note: I SHOULD HAVE DONE THESE 3 WITH THE LIST MODULE. *)
+
 (* size of a list *)
 let list_size lst = foldl (fun a b -> a + 1) 0 lst;;
 
