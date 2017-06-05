@@ -1,7 +1,8 @@
 (* A directed graph implementation *)
 (* Cyclomatic complexity (cc) for a graph = E - N + 2*P *)
 (* Note: cc for a single method/function/procedure *)
-(* is always E - N + 2. Within a single class, P is the  *)
+(* is always E - N + 2. Within a single class, P is the *)
+(* number of individual methods/functions/procedures *)
 
 exception NodeError of string
 
