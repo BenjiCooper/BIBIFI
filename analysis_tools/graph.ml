@@ -36,7 +36,8 @@ let insert_edge gr a b =
 		let edges' = e::gr.edges in
 		{ nodes = gr.nodes; edges = edges' }
 	else raise (NodeError "invalid node(s)")
-	
+;;
+
 (* number of nodes in a graph *)
 let num_nodes gr = list_size (gr.nodes);;
 (* number of edges in a graph *)
