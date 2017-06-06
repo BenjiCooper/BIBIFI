@@ -1,4 +1,5 @@
 (* A directed graph implementation *)
+(* This graph implementation is meant to be used to represent a control flow for a program *)
 (* Cyclomatic complexity (cc) for a graph = E - N + 2*P *)
 (* Note: cc for a single method/function/procedure *)
 (* is always E - N + 2. Within a single class, P is the *)
@@ -33,13 +34,13 @@ let rec remove_all xs ys = match ys with
 (* Graph type definition *)
 type node = int
 type edge = { src : node; dst : node; }
-type graph = { nodes : node list; edges : edge list; }
-let empty_graph = { nodes = []; edges = []; }
+type graph = { nodes : node list; edges : edge list; head : node; tail : node; }
+let empty_graph = { nodes = []; edges = []; head = -1; tail = -1 }
 
 (* Return the result of inserting a new node into the graph *)
 let insert_node gr n = 
 	let nodes' = n::(gr.nodes) in
-	{ nodes = nodes' ; edges = gr.edges }
+	{ nodes = nodes'; edges = gr.edges; head = gr.head; tail = gr.tail; }
 ;;
 
 (* Return the result of adding an edge to the graph between two specified nodes *)
@@ -49,8 +50,15 @@ let insert_edge gr a b =
 	if a' && b' then
 		let e = { src = a; dst = b; } in
 		let edges' = e::gr.edges in
-		{ nodes = gr.nodes; edges = edges' }
+		{ nodes = gr.nodes; edges = edges'; head = gr.head; tail = gr.tail; }
 	else raise (NodeError "invalid node(s)")
+;;
+
+(* Build a graph according to the provided specifications *)
+let build_graph ns es h t = 
+	let nodes = foldl (fun a b -> b::a) [] ns in
+	let edges = foldl (fun a (x,y) -> {src = x; dst = y;}::a) [] es in
+	{nodes = nodes; edges = edges; head = h; tail = t }
 ;;
 
 (* number of nodes in a graph *)
@@ -69,6 +77,7 @@ let dfs gr n =
 ;;
 
 (* find number of connected paths in the graph *)
+(* note: this is currently not relevant *)
 let connected gr = 
 	let rec helper lst = match lst with
 		  [] -> 0
@@ -83,6 +92,6 @@ let connected gr =
 let cyclomatic gr = 
 	let e = num_edges gr in
 	let n = num_nodes gr in
-	let p = connected gr in
-	e - n + 2*p
+	(*let p = connected gr in*)
+	e - n + 2
 ;;
