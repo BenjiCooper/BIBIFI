@@ -22,7 +22,7 @@ let rec stmt_to_graph st = match st with
                      let e4 = {src=g1.tail;dst=t;} in
                      let edges = [e1;e2;e3;e4]@(g1.edges)@(g2.edges) in
                      { nodes = nodes; edges = edges; head = h; tail = t; }
-    | Switch(e,cl) -> failwith "unimplemented"
+    | Switch(e,cl) -> failwith "unimplemented" (* All the pieces are there in my head, I just need to put them together. *)
     | While(e,s) -> let h = next () in
                     let g = stmt_to_graph s in
                     let t = next () in
@@ -32,12 +32,22 @@ let rec stmt_to_graph st = match st with
                     let e3 = {src=h;dst=t;} in
                     let edges = [e1;e2;e3]@g.edges in
                     { nodes = nodes; edges = edges; head = h; tail = t; }
-    | DoWhile(s,e) -> failwith "unimplemented"
+    | DoWhile(s,e) -> let g = to_graph s in
+                      let c = next () in
+                      let t = next () in
+                      let nodes = [c;t]@g.nodes in
+                      let e1 = {src=g.tail;dst=c;} in
+                      let e2 = {src=c;dst=g.head;} in
+                      let e3 = {src=c;dst=t;} in
+                      let edges = [e1;e2;e3]@g.edges in
+                      { nodes = nodes; edges = edges; head = g.head; tail = t; }
     | For(e1,e2,e3,s) -> failwith "unimplemented"
 
     (* REALLY NO IDEA WHAT TO DO WITH THESE *)
     | Break -> failwith "unimplemented" 
     | Continue -> failwith "unimplemented"
+    | Label(s,n) -> failwith "unimplemented"
+    | Goto(n) -> failwith "unimplemented"
 
     (* Anything else just becomes a single node *)
     | _ -> let n = next () in
