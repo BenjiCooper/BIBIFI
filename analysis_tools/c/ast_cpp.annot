@@ -1,0 +1,790 @@
+"ast_cpp.ml" 785 28720 28724 "ast_cpp.ml" 785 28720 28726
+type(
+  typeQualifier
+)
+ident(
+  def nQ "ast_cpp.ml" 786 28758 28758 "ast_cpp.ml" 1 0 -1
+)
+"ast_cpp.ml" 785 28720 28736 "ast_cpp.ml" 785 28720 28740
+type(
+  tok option
+)
+"ast_cpp.ml" 785 28720 28752 "ast_cpp.ml" 785 28720 28756
+type(
+  tok option
+)
+"ast_cpp.ml" 785 28720 28729 "ast_cpp.ml" 785 28720 28757
+type(
+  typeQualifier
+)
+"ast_cpp.ml" 786 28758 28762 "ast_cpp.ml" 786 28758 28770
+type(
+  unit -> ident_info
+)
+ident(
+  def noIdInfo "ast_cpp.ml" 787 28810 28810 "ast_cpp.ml" 1 0 -1
+)
+"ast_cpp.ml" 786 28758 28771 "ast_cpp.ml" 786 28758 28773
+type(
+  unit
+)
+"ast_cpp.ml" 786 28758 28788 "ast_cpp.ml" 786 28758 28806
+type(
+  Scope_code.scope
+)
+"ast_cpp.ml" 786 28758 28776 "ast_cpp.ml" 786 28758 28809
+type(
+  ident_info
+)
+"ast_cpp.ml" 787 28810 28814 "ast_cpp.ml" 787 28810 28818
+type(
+  'a list
+)
+ident(
+  def noii "ast_cpp.ml" 788 28824 28824 "ast_cpp.ml" 1 0 -1
+)
+"ast_cpp.ml" 787 28810 28821 "ast_cpp.ml" 787 28810 28823
+type(
+  'a list
+)
+"ast_cpp.ml" 788 28824 28828 "ast_cpp.ml" 788 28824 28836
+type(
+  'a list
+)
+ident(
+  def noQscope "ast_cpp.ml" 793 29018 29018 "ast_cpp.ml" 1 0 -1
+)
+"ast_cpp.ml" 788 28824 28839 "ast_cpp.ml" 788 28824 28841
+type(
+  'a list
+)
+"ast_cpp.ml" 793 29018 29022 "ast_cpp.ml" 793 29018 29028
+type(
+  'a * 'b -> 'a
+)
+ident(
+  def unwrap "ast_cpp.ml" 794 29039 29039 "ast_cpp.ml" 1 0 -1
+)
+"ast_cpp.ml" 793 29018 29029 "ast_cpp.ml" 793 29018 29030
+type(
+  'a * 'b
+)
+ident(
+  def x "ast_cpp.ml" 793 29018 29033 "ast_cpp.ml" 793 29018 29038
+)
+"ast_cpp.ml" 793 29018 29033 "ast_cpp.ml" 793 29018 29036
+type(
+  'a * 'b -> 'a
+)
+ident(
+  ext_ref Pervasives.fst
+)
+"ast_cpp.ml" 793 29018 29037 "ast_cpp.ml" 793 29018 29038
+type(
+  'a * 'b
+)
+ident(
+  int_ref x "ast_cpp.ml" 793 29018 29029 "ast_cpp.ml" 793 29018 29030
+)
+"ast_cpp.ml" 793 29018 29033 "ast_cpp.ml" 793 29018 29038
+type(
+  'a
+)
+"ast_cpp.ml" 794 29039 29043 "ast_cpp.ml" 794 29039 29050
+type(
+  ('a * 'b) list -> 'a list
+)
+ident(
+  def uncomma "ast_cpp.ml" 795 29072 29072 "ast_cpp.ml" 1 0 -1
+)
+"ast_cpp.ml" 794 29039 29051 "ast_cpp.ml" 794 29039 29053
+type(
+  ('a * 'b) list
+)
+ident(
+  def xs "ast_cpp.ml" 794 29039 29056 "ast_cpp.ml" 794 29039 29071
+)
+"ast_cpp.ml" 794 29039 29056 "ast_cpp.ml" 794 29039 29064
+type(
+  ('a * 'b -> 'a) -> ('a * 'b) list -> 'a list
+)
+ident(
+  ext_ref List.map
+)
+"ast_cpp.ml" 794 29039 29065 "ast_cpp.ml" 794 29039 29068
+type(
+  'a * 'b -> 'a
+)
+ident(
+  ext_ref Pervasives.fst
+)
+"ast_cpp.ml" 794 29039 29069 "ast_cpp.ml" 794 29039 29071
+type(
+  ('a * 'b) list
+)
+ident(
+  int_ref xs "ast_cpp.ml" 794 29039 29051 "ast_cpp.ml" 794 29039 29053
+)
+"ast_cpp.ml" 794 29039 29056 "ast_cpp.ml" 794 29039 29071
+call(
+  tail
+)
+type(
+  'a list
+)
+"ast_cpp.ml" 795 29072 29076 "ast_cpp.ml" 795 29072 29083
+type(
+  'a * 'b * 'c -> 'b
+)
+ident(
+  def unparen "ast_cpp.ml" 796 29098 29098 "ast_cpp.ml" 1 0 -1
+)
+"ast_cpp.ml" 795 29072 29085 "ast_cpp.ml" 795 29072 29086
+type(
+  'a
+)
+"ast_cpp.ml" 795 29072 29088 "ast_cpp.ml" 795 29072 29089
+type(
+  'b
+)
+ident(
+  def x "ast_cpp.ml" 795 29072 29096 "ast_cpp.ml" 795 29072 29097
+)
+"ast_cpp.ml" 795 29072 29091 "ast_cpp.ml" 795 29072 29092
+type(
+  'c
+)
+"ast_cpp.ml" 795 29072 29084 "ast_cpp.ml" 795 29072 29093
+type(
+  'a * 'b * 'c
+)
+"ast_cpp.ml" 795 29072 29096 "ast_cpp.ml" 795 29072 29097
+type(
+  'b
+)
+ident(
+  int_ref x "ast_cpp.ml" 795 29072 29088 "ast_cpp.ml" 795 29072 29089
+)
+"ast_cpp.ml" 796 29098 29102 "ast_cpp.ml" 796 29098 29109
+type(
+  'a * 'b * 'c -> 'b
+)
+ident(
+  def unbrace "ast_cpp.ml" 798 29125 29125 "ast_cpp.ml" 1 0 -1
+)
+"ast_cpp.ml" 796 29098 29111 "ast_cpp.ml" 796 29098 29112
+type(
+  'a
+)
+"ast_cpp.ml" 796 29098 29114 "ast_cpp.ml" 796 29098 29115
+type(
+  'b
+)
+ident(
+  def x "ast_cpp.ml" 796 29098 29122 "ast_cpp.ml" 796 29098 29123
+)
+"ast_cpp.ml" 796 29098 29117 "ast_cpp.ml" 796 29098 29118
+type(
+  'c
+)
+"ast_cpp.ml" 796 29098 29110 "ast_cpp.ml" 796 29098 29119
+type(
+  'a * 'b * 'c
+)
+"ast_cpp.ml" 796 29098 29122 "ast_cpp.ml" 796 29098 29123
+type(
+  'b
+)
+ident(
+  int_ref x "ast_cpp.ml" 796 29098 29114 "ast_cpp.ml" 796 29098 29115
+)
+"ast_cpp.ml" 798 29125 29129 "ast_cpp.ml" 798 29125 29141
+type(
+  'a * ('b * 'c) -> 'b
+)
+ident(
+  def unwrap_typeC "ast_cpp.ml" 806 29390 29390 "ast_cpp.ml" 1 0 -1
+)
+"ast_cpp.ml" 798 29125 29143 "ast_cpp.ml" 798 29125 29146
+type(
+  'a
+)
+ident(
+  def _qu "ast_cpp.ml" 798 29125 29164 "ast_cpp.ml" 798 29125 29169
+)
+"ast_cpp.ml" 798 29125 29149 "ast_cpp.ml" 798 29125 29154
+type(
+  'b
+)
+ident(
+  def typeC "ast_cpp.ml" 798 29125 29164 "ast_cpp.ml" 798 29125 29169
+)
+"ast_cpp.ml" 798 29125 29156 "ast_cpp.ml" 798 29125 29159
+type(
+  'c
+)
+ident(
+  def _ii "ast_cpp.ml" 798 29125 29164 "ast_cpp.ml" 798 29125 29169
+)
+"ast_cpp.ml" 798 29125 29148 "ast_cpp.ml" 798 29125 29160
+type(
+  'b * 'c
+)
+"ast_cpp.ml" 798 29125 29142 "ast_cpp.ml" 798 29125 29161
+type(
+  'a * ('b * 'c)
+)
+"ast_cpp.ml" 798 29125 29164 "ast_cpp.ml" 798 29125 29169
+type(
+  'b
+)
+ident(
+  int_ref typeC "ast_cpp.ml" 798 29125 29149 "ast_cpp.ml" 798 29125 29154
+)
+"ast_cpp.ml" 806 29390 29394 "ast_cpp.ml" 806 29390 29407
+type(
+  Parse_info.token_mutable -> Parse_info.token_mutable
+)
+ident(
+  def make_expanded "ast_cpp.ml" 813 29680 29680 "ast_cpp.ml" 1 0 -1
+)
+"ast_cpp.ml" 806 29390 29408 "ast_cpp.ml" 806 29390 29410
+type(
+  Parse_info.token_mutable
+)
+ident(
+  def ii "ast_cpp.ml" 807 29413 29415 "ast_cpp.ml" 810 29576 29650
+)
+"ast_cpp.ml" 807 29413 29419 "ast_cpp.ml" 807 29413 29428
+type(
+  Parse_info.token_location * int
+)
+ident(
+  def noVirtPos "ast_cpp.ml" 808 29493 29495 "ast_cpp.ml" 810 29576 29650
+)
+"ast_cpp.ml" 807 29413 29448 "ast_cpp.ml" 807 29413 29450
+type(
+  string
+)
+"ast_cpp.ml" 807 29413 29459 "ast_cpp.ml" 807 29413 29460
+type(
+  int
+)
+"ast_cpp.ml" 807 29413 29466 "ast_cpp.ml" 807 29413 29467
+type(
+  int
+)
+"ast_cpp.ml" 807 29413 29475 "ast_cpp.ml" 807 29413 29476
+type(
+  int
+)
+"ast_cpp.ml" 807 29413 29482 "ast_cpp.ml" 807 29413 29484
+type(
+  Common.filename
+)
+"ast_cpp.ml" 807 29413 29432 "ast_cpp.ml" 807 29413 29485
+type(
+  Parse_info.token_location
+)
+"ast_cpp.ml" 807 29413 29486 "ast_cpp.ml" 807 29413 29488
+type(
+  int
+)
+"ast_cpp.ml" 807 29413 29431 "ast_cpp.ml" 807 29413 29489
+type(
+  Parse_info.token_location * int
+)
+"ast_cpp.ml" 808 29493 29500 "ast_cpp.ml" 808 29493 29501
+type(
+  Parse_info.token_location
+)
+ident(
+  def a "ast_cpp.ml" 809 29521 29523 "ast_cpp.ml" 810 29576 29650
+)
+"ast_cpp.ml" 808 29493 29503 "ast_cpp.ml" 808 29493 29504
+type(
+  int
+)
+ident(
+  def b "ast_cpp.ml" 809 29521 29523 "ast_cpp.ml" 810 29576 29650
+)
+"ast_cpp.ml" 808 29493 29499 "ast_cpp.ml" 808 29493 29505
+type(
+  Parse_info.token_location * int
+)
+"ast_cpp.ml" 808 29493 29508 "ast_cpp.ml" 808 29493 29517
+type(
+  Parse_info.token_location * int
+)
+ident(
+  int_ref noVirtPos "ast_cpp.ml" 807 29413 29419 "ast_cpp.ml" 807 29413 29428
+)
+"ast_cpp.ml" 809 29521 29525 "ast_cpp.ml" 809 29521 29527
+type(
+  Parse_info.token_mutable
+)
+ident(
+  int_ref ii "ast_cpp.ml" 806 29390 29408 "ast_cpp.ml" 806 29390 29410
+)
+"ast_cpp.ml" 810 29576 29583 "ast_cpp.ml" 810 29576 29621
+type(
+  Parse_info.token_origin -> Parse_info.token_location
+)
+ident(
+  ext_ref Parse_info.get_original_token_location
+)
+"ast_cpp.ml" 810 29576 29622 "ast_cpp.ml" 810 29576 29624
+type(
+  Parse_info.token_mutable
+)
+ident(
+  int_ref ii "ast_cpp.ml" 806 29390 29408 "ast_cpp.ml" 806 29390 29410
+)
+"ast_cpp.ml" 810 29576 29622 "ast_cpp.ml" 810 29576 29641
+type(
+  Parse_info.token_origin
+)
+"ast_cpp.ml" 810 29576 29583 "ast_cpp.ml" 810 29576 29641
+call(
+  stack
+)
+type(
+  Parse_info.token_location
+)
+"ast_cpp.ml" 810 29576 29643 "ast_cpp.ml" 810 29576 29644
+type(
+  Parse_info.token_location
+)
+ident(
+  int_ref a "ast_cpp.ml" 808 29493 29500 "ast_cpp.ml" 808 29493 29501
+)
+"ast_cpp.ml" 810 29576 29646 "ast_cpp.ml" 810 29576 29647
+type(
+  int
+)
+ident(
+  int_ref b "ast_cpp.ml" 808 29493 29503 "ast_cpp.ml" 808 29493 29504
+)
+"ast_cpp.ml" 809 29521 29552 "ast_cpp.ml" 810 29576 29648
+type(
+  Parse_info.token_origin
+)
+"ast_cpp.ml" 809 29521 29523 "ast_cpp.ml" 810 29576 29650
+type(
+  Parse_info.token_mutable
+)
+"ast_cpp.ml" 808 29493 29495 "ast_cpp.ml" 810 29576 29650
+type(
+  Parse_info.token_mutable
+)
+"ast_cpp.ml" 807 29413 29415 "ast_cpp.ml" 810 29576 29650
+type(
+  Parse_info.token_mutable
+)
+"ast_cpp.ml" 813 29680 29684 "ast_cpp.ml" 813 29680 29696
+type(
+  Parse_info.token_origin ->
+  Parse_info.token_mutable -> Parse_info.token_mutable
+)
+ident(
+  def rewrap_pinfo "ast_cpp.ml" 818 29819 29819 "ast_cpp.ml" 1 0 -1
+)
+"ast_cpp.ml" 813 29680 29697 "ast_cpp.ml" 813 29680 29699
+type(
+  Parse_info.token_origin
+)
+ident(
+  def pi "ast_cpp.ml" 813 29680 29700 "ast_cpp.ml" 814 29707 29740
+)
+"ast_cpp.ml" 813 29680 29700 "ast_cpp.ml" 813 29680 29702
+type(
+  Parse_info.token_mutable
+)
+ident(
+  def ii "ast_cpp.ml" 814 29707 29709 "ast_cpp.ml" 814 29707 29740
+)
+"ast_cpp.ml" 814 29707 29710 "ast_cpp.ml" 814 29707 29712
+type(
+  Parse_info.token_mutable
+)
+ident(
+  int_ref ii "ast_cpp.ml" 813 29680 29700 "ast_cpp.ml" 813 29680 29702
+)
+"ast_cpp.ml" 814 29707 29737 "ast_cpp.ml" 814 29707 29739
+type(
+  Parse_info.token_origin
+)
+ident(
+  int_ref pi "ast_cpp.ml" 813 29680 29697 "ast_cpp.ml" 813 29680 29699
+)
+"ast_cpp.ml" 814 29707 29709 "ast_cpp.ml" 814 29707 29740
+type(
+  Parse_info.token_mutable
+)
+"ast_cpp.ml" 818 29819 29824 "ast_cpp.ml" 818 29819 29842
+type(
+  name -> string
+)
+ident(
+  def string_of_name_tmp "ast_cpp.ml" 824 29990 29990 "ast_cpp.ml" 1 0 -1
+)
+"ast_cpp.ml" 818 29819 29866 "ast_cpp.ml" 818 29819 29870
+type(
+  name
+)
+ident(
+  def name "ast_cpp.ml" 819 29874 29876 "ast_cpp.ml" 822 29945 29988
+)
+"ast_cpp.ml" 819 29874 29881 "ast_cpp.ml" 819 29874 29885
+type(
+  tok option
+)
+ident(
+  def _opt "ast_cpp.ml" 820 29906 29908 "ast_cpp.ml" 822 29945 29988
+)
+"ast_cpp.ml" 819 29874 29887 "ast_cpp.ml" 819 29874 29890
+type(
+  (qualifier * tok) list
+)
+ident(
+  def _qu "ast_cpp.ml" 820 29906 29908 "ast_cpp.ml" 822 29945 29988
+)
+"ast_cpp.ml" 819 29874 29892 "ast_cpp.ml" 819 29874 29894
+type(
+  ident
+)
+ident(
+  def id "ast_cpp.ml" 820 29906 29908 "ast_cpp.ml" 822 29945 29988
+)
+"ast_cpp.ml" 819 29874 29880 "ast_cpp.ml" 819 29874 29895
+type(
+  name
+)
+"ast_cpp.ml" 819 29874 29898 "ast_cpp.ml" 819 29874 29902
+type(
+  name
+)
+ident(
+  int_ref name "ast_cpp.ml" 818 29819 29866 "ast_cpp.ml" 818 29819 29870
+)
+"ast_cpp.ml" 820 29906 29914 "ast_cpp.ml" 820 29906 29916
+type(
+  ident
+)
+ident(
+  int_ref id "ast_cpp.ml" 819 29874 29892 "ast_cpp.ml" 819 29874 29894
+)
+"ast_cpp.ml" 821 29922 29935 "ast_cpp.ml" 821 29922 29936
+type(
+  string
+)
+ident(
+  def s "ast_cpp.ml" 821 29922 29943 "ast_cpp.ml" 821 29922 29944
+)
+"ast_cpp.ml" 821 29922 29937 "ast_cpp.ml" 821 29922 29938
+type(
+  tok
+)
+"ast_cpp.ml" 821 29922 29934 "ast_cpp.ml" 821 29922 29939
+type(
+  simple_ident
+)
+"ast_cpp.ml" 821 29922 29926 "ast_cpp.ml" 821 29922 29939
+type(
+  ident
+)
+"ast_cpp.ml" 821 29922 29943 "ast_cpp.ml" 821 29922 29944
+type(
+  string
+)
+ident(
+  int_ref s "ast_cpp.ml" 821 29922 29935 "ast_cpp.ml" 821 29922 29936
+)
+"ast_cpp.ml" 822 29945 29949 "ast_cpp.ml" 822 29945 29950
+type(
+  ident
+)
+"ast_cpp.ml" 822 29945 29954 "ast_cpp.ml" 822 29945 29962
+type(
+  string -> string
+)
+ident(
+  ext_ref Pervasives.failwith
+)
+"ast_cpp.ml" 822 29945 29963 "ast_cpp.ml" 822 29945 29988
+type(
+  string
+)
+"ast_cpp.ml" 822 29945 29954 "ast_cpp.ml" 822 29945 29988
+call(
+  tail
+)
+type(
+  string
+)
+"ast_cpp.ml" 820 29906 29908 "ast_cpp.ml" 822 29945 29988
+type(
+  string
+)
+"ast_cpp.ml" 819 29874 29876 "ast_cpp.ml" 822 29945 29988
+type(
+  string
+)
+"ast_cpp.ml" 818 29819 29862 "ast_cpp.ml" 822 29945 29988
+type(
+  name -> string
+)
+"ast_cpp.ml" 824 29990 29995 "ast_cpp.ml" 824 29990 30008
+type(
+  name -> tok list
+)
+ident(
+  def ii_of_id_name "ast_cpp.ml" 831 30268 30310 "ast_cpp.ml" 1 0 -1
+)
+"ast_cpp.ml" 824 29990 30034 "ast_cpp.ml" 824 29990 30038
+type(
+  name
+)
+ident(
+  def name "ast_cpp.ml" 825 30042 30044 "ast_cpp.ml" 831 30268 30310
+)
+"ast_cpp.ml" 825 30042 30049 "ast_cpp.ml" 825 30042 30053
+type(
+  tok option
+)
+ident(
+  def _opt "ast_cpp.ml" 826 30074 30076 "ast_cpp.ml" 831 30268 30310
+)
+"ast_cpp.ml" 825 30042 30055 "ast_cpp.ml" 825 30042 30058
+type(
+  (qualifier * tok) list
+)
+ident(
+  def _qu "ast_cpp.ml" 826 30074 30076 "ast_cpp.ml" 831 30268 30310
+)
+"ast_cpp.ml" 825 30042 30060 "ast_cpp.ml" 825 30042 30062
+type(
+  ident
+)
+ident(
+  def id "ast_cpp.ml" 826 30074 30076 "ast_cpp.ml" 831 30268 30310
+)
+"ast_cpp.ml" 825 30042 30048 "ast_cpp.ml" 825 30042 30063
+type(
+  name
+)
+"ast_cpp.ml" 825 30042 30066 "ast_cpp.ml" 825 30042 30070
+type(
+  name
+)
+ident(
+  int_ref name "ast_cpp.ml" 824 29990 30034 "ast_cpp.ml" 824 29990 30038
+)
+"ast_cpp.ml" 826 30074 30082 "ast_cpp.ml" 826 30074 30084
+type(
+  ident
+)
+ident(
+  int_ref id "ast_cpp.ml" 825 30042 30060 "ast_cpp.ml" 825 30042 30062
+)
+"ast_cpp.ml" 827 30090 30103 "ast_cpp.ml" 827 30090 30105
+type(
+  string
+)
+ident(
+  def _s "ast_cpp.ml" 827 30090 30113 "ast_cpp.ml" 827 30090 30117
+)
+"ast_cpp.ml" 827 30090 30106 "ast_cpp.ml" 827 30090 30108
+type(
+  tok
+)
+ident(
+  def ii "ast_cpp.ml" 827 30090 30113 "ast_cpp.ml" 827 30090 30117
+)
+"ast_cpp.ml" 827 30090 30102 "ast_cpp.ml" 827 30090 30109
+type(
+  simple_ident
+)
+"ast_cpp.ml" 827 30090 30094 "ast_cpp.ml" 827 30090 30109
+type(
+  ident
+)
+"ast_cpp.ml" 827 30090 30114 "ast_cpp.ml" 827 30090 30116
+type(
+  tok
+)
+ident(
+  int_ref ii "ast_cpp.ml" 827 30090 30106 "ast_cpp.ml" 827 30090 30108
+)
+"ast_cpp.ml" 827 30090 30113 "ast_cpp.ml" 827 30090 30117
+type(
+  tok list
+)
+"ast_cpp.ml" 828 30118 30134 "ast_cpp.ml" 828 30118 30135
+type(
+  tok
+)
+"ast_cpp.ml" 828 30118 30138 "ast_cpp.ml" 828 30118 30141
+type(
+  operator
+)
+ident(
+  def _op "ast_cpp.ml" 828 30118 30151 "ast_cpp.ml" 828 30118 30153
+)
+"ast_cpp.ml" 828 30118 30143 "ast_cpp.ml" 828 30118 30145
+type(
+  tok list
+)
+ident(
+  def ii "ast_cpp.ml" 828 30118 30151 "ast_cpp.ml" 828 30118 30153
+)
+"ast_cpp.ml" 828 30118 30137 "ast_cpp.ml" 828 30118 30146
+type(
+  operator * tok list
+)
+"ast_cpp.ml" 828 30118 30122 "ast_cpp.ml" 828 30118 30147
+type(
+  ident
+)
+"ast_cpp.ml" 828 30118 30151 "ast_cpp.ml" 828 30118 30153
+type(
+  tok list
+)
+ident(
+  int_ref ii "ast_cpp.ml" 828 30118 30143 "ast_cpp.ml" 828 30118 30145
+)
+"ast_cpp.ml" 829 30154 30171 "ast_cpp.ml" 829 30154 30175
+type(
+  tok
+)
+ident(
+  def _tok "ast_cpp.ml" 829 30154 30185 "ast_cpp.ml" 829 30154 30222
+)
+"ast_cpp.ml" 829 30154 30177 "ast_cpp.ml" 829 30154 30180
+type(
+  fullType
+)
+ident(
+  def _ft "ast_cpp.ml" 829 30154 30185 "ast_cpp.ml" 829 30154 30222
+)
+"ast_cpp.ml" 829 30154 30158 "ast_cpp.ml" 829 30154 30181
+type(
+  ident
+)
+"ast_cpp.ml" 829 30154 30185 "ast_cpp.ml" 829 30154 30193
+type(
+  string -> tok list
+)
+ident(
+  ext_ref Pervasives.failwith
+)
+"ast_cpp.ml" 829 30154 30194 "ast_cpp.ml" 829 30154 30222
+type(
+  string
+)
+"ast_cpp.ml" 829 30154 30185 "ast_cpp.ml" 829 30154 30222
+call(
+  tail
+)
+type(
+  tok list
+)
+"ast_cpp.ml" 830 30223 30241 "ast_cpp.ml" 830 30223 30244
+type(
+  tok
+)
+ident(
+  def tok "ast_cpp.ml" 830 30223 30259 "ast_cpp.ml" 830 30223 30267
+)
+"ast_cpp.ml" 830 30223 30247 "ast_cpp.ml" 830 30223 30249
+type(
+  string
+)
+ident(
+  def _s "ast_cpp.ml" 830 30223 30259 "ast_cpp.ml" 830 30223 30267
+)
+"ast_cpp.ml" 830 30223 30251 "ast_cpp.ml" 830 30223 30253
+type(
+  tok
+)
+ident(
+  def ii "ast_cpp.ml" 830 30223 30259 "ast_cpp.ml" 830 30223 30267
+)
+"ast_cpp.ml" 830 30223 30246 "ast_cpp.ml" 830 30223 30254
+type(
+  simple_ident
+)
+"ast_cpp.ml" 830 30223 30227 "ast_cpp.ml" 830 30223 30255
+type(
+  ident
+)
+"ast_cpp.ml" 830 30223 30260 "ast_cpp.ml" 830 30223 30263
+type(
+  tok
+)
+ident(
+  int_ref tok "ast_cpp.ml" 830 30223 30241 "ast_cpp.ml" 830 30223 30244
+)
+"ast_cpp.ml" 830 30223 30264 "ast_cpp.ml" 830 30223 30266
+type(
+  tok
+)
+ident(
+  int_ref ii "ast_cpp.ml" 830 30223 30251 "ast_cpp.ml" 830 30223 30253
+)
+"ast_cpp.ml" 830 30223 30259 "ast_cpp.ml" 830 30223 30267
+type(
+  tok list
+)
+"ast_cpp.ml" 831 30268 30287 "ast_cpp.ml" 831 30268 30289
+type(
+  string
+)
+ident(
+  def _s "ast_cpp.ml" 831 30268 30306 "ast_cpp.ml" 831 30268 30310
+)
+"ast_cpp.ml" 831 30268 30291 "ast_cpp.ml" 831 30268 30293
+type(
+  tok
+)
+ident(
+  def ii "ast_cpp.ml" 831 30268 30306 "ast_cpp.ml" 831 30268 30310
+)
+"ast_cpp.ml" 831 30268 30286 "ast_cpp.ml" 831 30268 30294
+type(
+  simple_ident
+)
+"ast_cpp.ml" 831 30268 30296 "ast_cpp.ml" 831 30268 30301
+type(
+  template_arguments
+)
+ident(
+  def _args "ast_cpp.ml" 831 30268 30306 "ast_cpp.ml" 831 30268 30310
+)
+"ast_cpp.ml" 831 30268 30272 "ast_cpp.ml" 831 30268 30302
+type(
+  ident
+)
+"ast_cpp.ml" 831 30268 30307 "ast_cpp.ml" 831 30268 30309
+type(
+  tok
+)
+ident(
+  int_ref ii "ast_cpp.ml" 831 30268 30291 "ast_cpp.ml" 831 30268 30293
+)
+"ast_cpp.ml" 831 30268 30306 "ast_cpp.ml" 831 30268 30310
+type(
+  tok list
+)
+"ast_cpp.ml" 826 30074 30076 "ast_cpp.ml" 831 30268 30310
+type(
+  tok list
+)
+"ast_cpp.ml" 825 30042 30044 "ast_cpp.ml" 831 30268 30310
+type(
+  tok list
+)
+"ast_cpp.ml" 824 29990 30030 "ast_cpp.ml" 831 30268 30310
+type(
+  name -> tok list
+)
