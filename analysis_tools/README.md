@@ -6,4 +6,3 @@ Language Support:
 
 In Progress:
 - Java
-- PHP
