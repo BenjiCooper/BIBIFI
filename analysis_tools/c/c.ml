@@ -9,9 +9,7 @@ let hash = Hashtbl.create 20;; (* Assume there's -hopefully- fewer than 20 GOTO 
 
 let rec stmt_to_graph st = match st with
 
-      ExprSt(e) -> let n = next () in
-                   { nodes = [n]; edges = []; head = n; tail = n; }
-    | Block(b) -> foldr (fun a x -> connect a (stmt_to_graph x)) empty_graph b
+      Block(b) -> foldr (fun a x -> connect a (stmt_to_graph x)) empty_graph b
 
     (* Branch statements *)
     | If(e,s1,s2) -> let h = next () in
