@@ -5,10 +5,13 @@
 
 (* STATEMENT CONVERSION TO GRAPH *)
 
+let hash = Hashtbl.create 20;; (* Assume there's -hopefully- fewer than 20 GOTO statements *)
+
 let rec stmt_to_graph st = match st with
 
-      ExprSt(e) -> failwith "unimplemented"
-    | Block(b) -> foldl (fun a b -> connect a (stmt_to_graph b)) empty_graph b
+      ExprSt(e) -> let n = next () in
+                   { nodes = [n]; edges = []; head = n; tail = n; }
+    | Block(b) -> foldr (fun a x -> connect a (stmt_to_graph x)) empty_graph b
 
     (* THESE ARE THE IMPORTANT ONES *)
     | If(e,s1,s2) -> let h = next () in
@@ -22,7 +25,20 @@ let rec stmt_to_graph st = match st with
                      let e4 = {src=g1.tail;dst=t;} in
                      let edges = [e1;e2;e3;e4]@(g1.edges)@(g2.edges) in
                      { nodes = nodes; edges = edges; head = h; tail = t; }
-    | Switch(e,cl) -> failwith "unimplemented" (* All the pieces are there in my head, I just need to put them together. *)
+    | Switch(e,cl) -> (let case_to_g c = match c with
+                             Default(sl) -> foldr (fun a b -> connect a (stmt_to_graph b)) empty_graph sl
+                           | Case(e,sl) -> foldr (fun a b -> connect a (stmt_to_graph b)) empty_graph sl) in
+                      let l = map (case_to_g) cl in
+                      let h = next () in
+                      let t = next () in
+                      let g = {nodes=[h;t];edges=[];head=h;tail=t;} in
+                      let btwn gr1 gr2 =
+                        let nodes = gr1.nodes@gr2.nodes in
+                        let e1 = {src=gr1.head;dst=gr2.head;} in
+                        let e2 = {src=gr2.tail;gr1.tail;} in
+                        let edges = [e1;e2]@gr1.edges@gr2.edges in
+                        { nodes = nodes; edges = edges; head = h; tail = t; }
+                      in foldl (btwn) g l
     | While(e,s) -> let h = next () in
                     let g = stmt_to_graph s in
                     let t = next () in
@@ -41,15 +57,31 @@ let rec stmt_to_graph st = match st with
                       let e3 = {src=c;dst=t;} in
                       let edges = [e1;e2;e3]@g.edges in
                       { nodes = nodes; edges = edges; head = g.head; tail = t; }
-    | For(e1,e2,e3,s) -> failwith "unimplemented"
+    | For(ex1,ex2,ex3,s) -> let h = next () in
+                            let g = stmt_to_graph s in
+                            let t = next () in
+                            let nodes = [h;t]@g.nodes in
+                            let e1 = {src=h;dst=g.head;} in
+                            let e2 = {src=g.tail;dst=h;} in
+                            let e3 = {src=h;dst=t;} in
+                            let edges = [e1;e2;e3]@g.edges in
+                            {nodes = nodes; edges = edges; head = h; tail = t; }
 
     (* REALLY NO IDEA WHAT TO DO WITH THESE *)
     | Break -> failwith "unimplemented" 
     | Continue -> failwith "unimplemented"
-    | Label(s,n) -> failwith "unimplemented"
-    | Goto(n) -> failwith "unimplemented"
+
+    (* Use a hash to create associations for Label and GOTO *)
+    | Label(s,n) -> let c = next () in
+                    let u = Hashtbl.add hash n c in
+                    { nodes = [n]; edges = []; head = n; tail = n; }
+    | Goto(n) -> let n1 = Hashtbl.find hash n in
+                 let n2 = next () in
+                 let e = {src=n2;dst=n1;} in
+                 { nodes = [n]; edges = e; head = n; tail = n; }
 
     (* Anything else just becomes a single node *)
+    (* NOTE: This probably won't work for ASM *)
     | _ -> let n = next () in
            { nodes = [n]; edges = []; head = n; tail = n; }
 ;;
@@ -57,7 +89,7 @@ let rec stmt_to_graph st = match st with
 (* TOP-LEVEL CONVERSION TO GRAPH *)
 
 let func_to_graph { f_name = n; f_type = t; f_body = b; f_static = s; } = 
-    foldl (fun a x -> connect a (stmt_to_graph x)) empty_graph b
+    foldr (fun a x -> connect a (stmt_to_graph x)) empty_graph b
 ;;
 
 let rec top_level_to_graph tl = match tl with
