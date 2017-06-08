@@ -13,7 +13,7 @@ let rec stmt_to_graph st = match st with
                    { nodes = [n]; edges = []; head = n; tail = n; }
     | Block(b) -> foldr (fun a x -> connect a (stmt_to_graph x)) empty_graph b
 
-    (* THESE ARE THE IMPORTANT ONES *)
+    (* Branch statements *)
     | If(e,s1,s2) -> let h = next () in
                      let g1 = stmt_to_graph s1 in
                      let g2 = stmt_to_graph s2 in
