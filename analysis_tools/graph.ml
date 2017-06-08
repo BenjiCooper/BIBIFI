@@ -10,6 +10,7 @@ exception NodeError of string
 (* map and fold left *)
 let map f l = (List.map f l);;
 let foldl f a l = (List.fold_left f a l);;
+let foldr f a l = (List.fold_right f a l);;
 
 (* Note: I SHOULD HAVE DONE THESE 3 WITH THE LIST MODULE. *)
 
