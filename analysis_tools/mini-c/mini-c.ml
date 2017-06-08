@@ -7,22 +7,6 @@
 #use "../graph.ml"
 #use "mini-c-types.ml"
 
-let get_next_gen2 () =
-  let x = ref 0 in
-  (fun () -> let r = !x in x := !x + 1; r)
-let next = get_next_gen2 ();;
-
-(* Connect two graphs *)
-let rec connect g1 g2 = 
-    if g1 = empty_graph then
-        g2
-    else if g2 = empty_graph then
-        g1
-    else
-        let nodes = g1.nodes@g2.nodes in
-        let edges = [{src=g1.tail;dst=g2.head;}]@g1.edges@g2.edges in
-        { nodes = nodes; edges = edges; head = g1.head; tail = g2.tail; }
-
 (* Convert an evaluation statement into a control flow graph. *)
 (* No Operation generates an empty graph *)
 (* Sequencing statements should generate 2 graphs and connect them *)
