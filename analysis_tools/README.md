@@ -2,8 +2,8 @@ Language analysis tools, to transform programs in various languages into control
 
 Language Support:
 - Mini-C
+- C (mostly complete)
 
 In Progress:
-- C
 - Java
-- Python
+- PHP
