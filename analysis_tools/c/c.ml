@@ -1,4 +1,9 @@
-(* Code to convert C code into a control flow graph. *)
+(* Author: Benjamin Cooper, benji97@gmail.com
+ * This code was written to perform analysis for code entries to the
+ * Build it, Break it, Fix it (BIBIFI) competition.
+ * This specific file converts C code into a control flow graph
+ * in order to perform various analyses.
+ *)
 
 #use "ast_c.ml"
 #use "../graph.ml"
