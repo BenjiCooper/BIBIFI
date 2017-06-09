@@ -107,9 +107,8 @@ let connected gr =
 
 (* compute cyclomatic complexity for a graph *)
 (* Note: P = number of methods in a class/file *)
-let cyclomatic gr = 
+let cyclomatic gr p = 
     let e = num_edges gr in
     let n = num_nodes gr in
-    (*let p = connected gr in*)
-    e - n + 2
+    e - n + 2*p
 ;;

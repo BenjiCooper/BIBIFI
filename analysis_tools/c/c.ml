@@ -36,11 +36,11 @@ let rec stmt_to_graph st = match st with
                       let t = next () in
                       let g = {nodes=[h;t];edges=[];head=h;tail=t;} in
                       let btwn gr1 gr2 =
-                        let nodes = gr1.nodes@gr2.nodes in
-                        let e1 = {src=gr1.head;dst=gr2.head;} in
-                        let e2 = {src=gr2.tail;gr1.tail;} in
-                        let edges = [e1;e2]@gr1.edges@gr2.edges in
-                        { nodes = nodes; edges = edges; head = h; tail = t; }
+                          let nodes = gr1.nodes@gr2.nodes in
+                          let e1 = {src=gr1.head;dst=gr2.head;} in
+                          let e2 = {src=gr2.tail;gr1.tail;} in
+                          let edges = [e1;e2]@gr1.edges@gr2.edges in
+                          { nodes = nodes; edges = edges; head = h; tail = t; }
                       in foldl (btwn) g l
     | While(e,s) -> let h = next () in
                     let g = stmt_to_graph s in
@@ -98,14 +98,20 @@ let func_to_graph { f_name = n; f_type = t; f_body = b; f_static = s; } =
 let rec top_level_to_graph tl = match tl with
       FuncDef(fd) -> func_to_graph fd
     | _ -> empty_graph
+;;
 
 (* PROGRAM CONVERSION TO GRAPH *)
 
+(* This may be preferable. *)
+let program_to_graph_list pr = map (fun a -> top_level_to_graph a) pr;;
+
+(* This function is problematic, and shouldn't be used quite yet. *)
 let rec program_to_graph pr = match pr with
       [] -> empty_graph
     | h::t -> let g1 = top_level_to_graph h in
               let g2 = program_to_graph t in
-              connect g1 g2
+              (* This line is problematic, because of head and tail. Maybe I should return a graph list? *)
+              { nodes = g1.nodes@g2.nodes; edges = g1.edges@g2.edges; head = g1.head; tail = g2.tail }
 ;;
 
 (* CODE CONVERSION TO GRAPH *)
