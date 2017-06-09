@@ -123,3 +123,11 @@ let rec to_graph code = match code with
     | Toplevel(tl) -> top_level_to_graph tl
     | Program(pr) -> program_to_graph pr
 ;;
+
+
+(* ========================================================================================================== *)
+(* TODO: add code to read in a file, find cyclomatic complexity (and any other heuristic), and write to a csv *)
+(* ========================================================================================================== *)
+
+let analyze file_name = failwith "unimplemented" (* This should probably be in a separate file. *)
+

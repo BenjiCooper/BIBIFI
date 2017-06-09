@@ -6,3 +6,5 @@ Language Support:
 
 In Progress:
 - Java
+
+Yes, I know the C directory is currently really messy. I'm going to clean it up next week once I have C and Java working and can test everything.
