@@ -3,7 +3,9 @@
 #	Author: Benjamin Cooper
 #   Perform statistical analyses over Build it Break it Fix it entries.
 
+from scipy import stats
 import argparse as ap
+import random as rnd
 import os
 import re
 
@@ -16,6 +18,7 @@ class Analysis(object):
 		self.analysis = analysis
 		self.verbose = verbose
 		self.pattern = ''
+		self.results = []
 
 		if (self.lang == 'rust'):
 			self.pattern += '.rs'
@@ -37,6 +40,14 @@ class Analysis(object):
 		print('\t'*n1 + '='*(n+2))
 		print('\t'*n1)
 
+	def cyclomatic(self, filename):
+		# TODO: have this apply OCaml code and return cyclomatic complexity
+		return rnd.randint(0,100)
+
+	def security(self, filename):
+		# TODO: have this look up the security score for the given file
+		return rnd.randint(0,100)
+
 	def traverse(self, dirname, n = 0):
 		os.chdir(dirname)
 		dirlist = os.listdir(dirname)
@@ -47,31 +58,60 @@ class Analysis(object):
 			elif(self.lang == 'all'):
 				if(d.endswith('.py') or d.endswith('.rb') or d.endswith('.rs') or 
 					d.endswith('.java') or d.endswith('.c') or d.endswith('.go') or d.endswith('.ml')):
-					print('\t'*n + 'analyzing ' + d)
+					cyclo = self.cyclomatic(d)
+					secu = self.security(d)
+					self.results.append((cyclo,secu))
+					if(self.verbose):
+						print('\t'*n + 'analyzing ' + d + '...' + str((cyclo,secu)))
 			elif(d.endswith(self.pattern)):
-				print('\t'*n + 'analyzing ' + d)
+				cyclo = self.cyclomatic(d)
+				secu = self.security(d)
+				self.results.append((cyclo,secu))
+				if(self.verbose):
+					print('\t'*n + 'analyzing ' + d + str((cyclo,secu)))
+
 
 		for d in stack:
-			self.pretty_print(d, n+1)
+			if(self.verbose):
+				self.pretty_print(d, n+1)
 			os.chdir(d)
 			self.traverse('.', n+1)
 			os.chdir('..')
-			self.pretty_print('end '+d, n+1)
+			if(self.verbose):
+				self.pretty_print('end '+d, n+1)
+
 
 	def analyze(self):
-		if(self.dirname == '.'):
-			self.pretty_print('curr dir')
-			self.traverse(self.dirname)
-			self.pretty_print('end curr dir')
+		if(self.verbose):
+			if(self.dirname == '.'):
+				self.pretty_print('curr dir')
+				self.traverse(self.dirname)
+				self.pretty_print('end curr dir')
+			else:
+				self.pretty_print(self.dirname)
+				self.traverse(self.dirname)
+				self.pretty_print('end ' + self.dirname)
+			slope, intercept, r_value, p_value, std_err = stats.linregress(self.results)
+			print(self.results)
+			self.pretty_print('linear regression')
+			print('slope: ' + str(slope))
+			print('intercept: ' + str(intercept))
+			print('r_value: ' + str(r_value))
+			print('p_value: ' + str(p_value))
+			print('std_err: ' + str(std_err))
 		else:
-			self.pretty_print(self.dirname)
 			self.traverse(self.dirname)
-			self.pretty_print('end ' + self.dirname)
-
-
+			slope, intercept, r_value, p_value, std_err = stats.linregress(self.results)
+			self.pretty_print('linear regression')
+			print('slope: ' + str(slope))
+			print('intercept: ' + str(intercept))
+			print('r_value: ' + str(r_value))
+			print('p_value: ' + str(p_value))
+			print('std_err: ' + str(std_err))
+			
 
 def main():
-	parser = ap.ArgumentParser(description='Applying statistical analyses')
+	parser = ap.ArgumentParser(description='Applying statistical analyses to BIBIFI submissions')
 
 	parser.add_argument('-d', '--dirname', nargs=1, type = str, default = ['.'],
 		help = 'The name of the directory to traverse.')
@@ -80,7 +120,7 @@ def main():
 		help = 'The language you would like to check. Default is all.')
 
 	parser.add_argument('-a', '--analysis', nargs=1, choices=['all', 'linreg'], default = ['all'],
-		help = 'The type of analysis you would like to apply. Default is all.')
+		help = 'The type of analysis you would like to apply. Default is all. (note: as of now it will only do linreg)')
 
 	parser.add_argument('-v', '--verbose', action="store_true", default = False,
 		help = 'Flag to to activate verbose printing.')
