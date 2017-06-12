@@ -77,8 +77,6 @@ class Analysis(object):
 			os.chdir(d)
 			self.traverse('.', n+1)
 			os.chdir('..')
-			if(self.verbose):
-				self.pretty_print('end '+d, n+1)
 
 
 	def analyze(self):
@@ -86,11 +84,9 @@ class Analysis(object):
 			if(self.dirname == '.'):
 				self.pretty_print('curr dir')
 				self.traverse(self.dirname)
-				self.pretty_print('end curr dir')
 			else:
 				self.pretty_print(self.dirname)
 				self.traverse(self.dirname)
-				self.pretty_print('end ' + self.dirname)
 			slope, intercept, r_value, p_value, std_err = stats.linregress(self.results)
 			print(self.results)
 			self.pretty_print('linear regression')
