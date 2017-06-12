@@ -5,7 +5,7 @@
  * in order to perform various analyses.
  *)
 
-#use "ast_c.ml"
+#use "AST/ast_c.ml"
 #use "../graph.ml"
 
 (* STATEMENT CONVERSION TO GRAPH *)
