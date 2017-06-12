@@ -37,7 +37,7 @@ class Analysis(object):
 		print('\t'*n1 + '='*(n+2))
 		print('\t'*n1)
 
-	def traverse(self, dirname, n):
+	def traverse(self, dirname, n = 0):
 		os.chdir(dirname)
 		dirlist = os.listdir(dirname)
 		stack = []
@@ -61,11 +61,11 @@ class Analysis(object):
 	def analyze(self):
 		if(self.dirname == '.'):
 			self.pretty_print('curr dir')
-			self.traverse(self.dirname, -1)
+			self.traverse(self.dirname)
 			self.pretty_print('end curr dir')
 		else:
 			self.pretty_print(self.dirname)
-			self.traverse(self.dirname, -1)
+			self.traverse(self.dirname)
 			self.pretty_print('end ' + self.dirname)
 
 
