@@ -5,14 +5,44 @@
  * in order to perform various analyses.
  *)
 
+(* This should be done with modules, TODO: talk to Dr. Hicks and ask him to teach you modules please *)
 #use "AST/ast_c.ml"
 #use "../graph.ml"
 
 (* STATEMENT CONVERSION TO GRAPH *)
 
-let hash = Hashtbl.create 20;; (* Assume there's -hopefully- fewer than 20 GOTO statements *)
+let bhash1 = Hashtbl.create 20;; (* Used for contains_break *)
+let bhash2 = Hashtbl.create 20;; (* Used for binding break statements *)
+let ghash = Hashtbl.create 20;; (* Assume there's -hopefully- fewer than 20 GOTO statements *)
 
-let rec stmt_to_graph st = match st with
+(* Does the given statement contain a break? *)
+let rec contains_break stmt = match stmt with
+
+      Block(b) -> foldl (fun a x -> a || (contains_break x)) false b
+
+    | If(e,s1,s2) -> (contains_break s1) || (contains_break s2)
+    (* NOTE: maybe switch should just return true? *)
+    | Switch(e,cl) -> let case_to_break c = (match c with
+                            Case(e,sl) -> foldl (fun a b -> a || (contains_break b)) false sl
+                          | Default(sl) -> foldl (fun a b -> a || (contains_break b)) false sl) in 
+        foldl (fun a b -> a || (case_to_break b)) false cl*)
+    | While(e,s) -> contains_break s
+    | DoWhile(s,e) -> contains_break s
+    | For(e1,e2,e3,s) -> contains_break s
+
+    | Continue -> true
+    | Break -> true
+
+    | Label(n,s) -> let u = Hashtbl.add bhash1 n s in contains_break s
+    | Goto(n) -> let s = Hashtbl.find bhash1 n in contains_break s
+
+    | _ -> false
+
+let rec stmt_to_graph st = 
+
+    let break = ref -1 in
+
+    match st with
 
       Block(b) -> foldr (fun a x -> connect a (stmt_to_graph x)) empty_graph b
 
@@ -28,7 +58,7 @@ let rec stmt_to_graph st = match st with
                      let e4 = {src=g1.tail;dst=t;} in
                      let edges = [e1;e2;e3;e4]@(g1.edges)@(g2.edges) in
                      { nodes = nodes; edges = edges; head = h; tail = t; }
-    | Switch(e,cl) -> (let case_to_g c = match c with
+    | Switch(e,cl) -> let case_to_g c = (match c with
                              Default(sl) -> foldr (fun a b -> connect a (stmt_to_graph b)) empty_graph sl
                            | Case(e,sl) -> foldr (fun a b -> connect a (stmt_to_graph b)) empty_graph sl) in
                       let l = map (case_to_g) cl in
@@ -38,11 +68,12 @@ let rec stmt_to_graph st = match st with
                       let btwn gr1 gr2 =
                           let nodes = gr1.nodes@gr2.nodes in
                           let e1 = {src=gr1.head;dst=gr2.head;} in
-                          let e2 = {src=gr2.tail;gr1.tail;} in
+                          let e2 = {src=gr2.tail;dst=gr1.tail;} in
                           let edges = [e1;e2]@gr1.edges@gr2.edges in
                           { nodes = nodes; edges = edges; head = h; tail = t; }
                       in foldl (btwn) g l
-    | While(e,s) -> let h = next () in
+    | While(e,s) -> (* Set up the graph to be returned *)
+                    let h = next () in
                     let g = stmt_to_graph s in
                     let t = next () in
                     let nodes = [h;t]@g.nodes in
@@ -50,7 +81,14 @@ let rec stmt_to_graph st = match st with
                     let e2 = {src=g.tail;dst=h;} in
                     let e3 = {src=h;dst=t;} in
                     let edges = [e1;e2;e3]@g.edges in
-                    { nodes = nodes; edges = edges; head = h; tail = t; }
+                    let graph = { nodes = nodes; edges = edges; head = h; tail = t; } in
+
+                    (* Deal with any break statements *)
+                    (* Currently does not support breaks in nested loops *)
+                    let b = contains_break s in
+                    let n = next () in
+                    let u = if b then Hashtbl.add n t else () in
+                    break := n; graph
     | DoWhile(s,e) -> let g = to_graph s in
                       let c = next () in
                       let t = next () in
@@ -71,17 +109,18 @@ let rec stmt_to_graph st = match st with
                             {nodes = nodes; edges = edges; head = h; tail = t; }
 
     (* REALLY NO IDEA WHAT TO DO WITH THESE *)
-    | Break -> failwith "unimplemented" 
+    | Break -> let n = Hashtbl.find break in
+               { nodes = [break]; edges = [{src=break;dst=n;}]; head = n; tail = n }
     | Continue -> failwith "unimplemented"
 
     (* Use a hash to create associations for Label and GOTO *)
     | Label(s,n) -> let c = next () in
-                    let u = Hashtbl.add hash n c in
+                    let u = Hashtbl.add ghash n c in
                     { nodes = [n]; edges = []; head = n; tail = n; }
-    | Goto(n) -> let n1 = Hashtbl.find hash n in
+    | Goto(n) -> let n1 = Hashtbl.find ghash n in
                  let n2 = next () in
                  let e = {src=n2;dst=n1;} in
-                 { nodes = [n]; edges = e; head = n; tail = n; }
+                 { nodes = [n]; edges = [e]; head = n; tail = n; }
 
     (* Anything else just becomes a single node *)
     (* NOTE: This probably won't work for ASM *)

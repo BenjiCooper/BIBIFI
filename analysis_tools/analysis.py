@@ -3,6 +3,7 @@
 #   Author: Benjamin Cooper
 #   Perform statistical analyses over Build it Break it Fix it entries.
 #   TODO: write code to interface with existing R code, write code to get cyclomatic complexity, write code to get BIBIFI scores.
+#   DEPREACTED: SHOULD BE REPLACED WITH A .ML FILE
 
 from scipy import stats
 import argparse as ap

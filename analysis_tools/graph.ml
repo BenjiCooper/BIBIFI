@@ -5,6 +5,8 @@
 (* is always E - N + 2. Within a single class, P is the *)
 (* number of individual methods/functions/procedures *)
 
+open Printf
+
 exception NodeError of string
 
 (* map and fold left *)
@@ -112,3 +114,24 @@ let cyclomatic gr p =
     let n = num_nodes gr in
     e - n + 2*p
 ;;
+
+(* Print information about the graph *)
+let print_int_list lst = List.iter (printf "%d ") lst;;
+
+let rec print_edges lst = match lst with
+      [] -> ()
+    | {src=s;dst=d;}::t -> (print_string "source: ");(print_int s);(print_string " dest: ");(print_int d);(print_string "\n");(print_edges t)
+
+let rec print_graph {nodes = n; edges = e; head = h; tail = t;} = 
+    print_string "head: ";
+    print_int h;
+    print_string "\ntail: ";
+    print_int t;
+    print_string "\nnodes: ";
+    print_int_list n;
+    print_string "\nedges: ";
+    print_edges e;
+    print_string "\n"
+;;
+
+
