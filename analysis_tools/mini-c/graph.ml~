@@ -131,6 +131,8 @@ let rec print_graph {nodes = n; edges = e; head = h; tail = t;} =
     print_int_list n;
     print_string "\nedges:\n";
     print_edges e;
+    print_string "\n\ncyclomatic complexity: ";
+    print_int (cyclomatic {nodes = n; edges = e; head = h; tail = t;} 1);
     print_string "\n"
 ;;
 

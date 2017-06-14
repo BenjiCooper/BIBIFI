@@ -68,7 +68,7 @@ let build file =
 ;;
 
 let () = 
-    let fn = Array.get (Sys.argv) 1 in
+    let fn = Array.get (Sys.argv) 0 in
     let g = build fn in
     print_graph g
 ;;

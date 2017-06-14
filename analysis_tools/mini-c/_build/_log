@@ -1,0 +1,32 @@
+### Starting build.
+# Target: minic.mli.depends, tags: { extension:mli, file:minic.mli, ocaml, ocamldep, quiet }
+ocamldep.opt -modules minic.mli > minic.mli.depends
+# Target: ast.ml.depends, tags: { extension:ml, file:ast.ml, ocaml, ocamldep, quiet }
+ocamldep.opt -modules ast.ml > ast.ml.depends
+# Target: graph.ml.depends, tags: { extension:ml, file:graph.ml, ocaml, ocamldep, quiet }
+ocamldep.opt -modules graph.ml > graph.ml.depends
+# Target: ast.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:ast.cmo, file:ast.ml, implem, ocaml, quiet }
+ocamlc.opt -c -I /usr/local/lib/ocaml -o ast.cmo ast.ml
+# Target: graph.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:graph.cmo, file:graph.ml, implem, ocaml, quiet }
+ocamlc.opt -c -I /usr/local/lib/ocaml -o graph.cmo graph.ml
+# Target: minic.cmi, tags: { byte, compile, extension:mli, file:minic.mli, interf, ocaml, quiet }
+ocamlc.opt -c -I /usr/local/lib/ocaml -o minic.cmi minic.mli
+# Target: minic.ml.depends, tags: { extension:ml, file:minic.ml, ocaml, ocamldep, quiet }
+ocamldep.opt -modules minic.ml > minic.ml.depends
+# Target: lexer.ml.depends, tags: { extension:ml, file:lexer.ml, ocaml, ocamldep, quiet }
+ocamldep.opt -modules lexer.ml > lexer.ml.depends
+# Target: parser.ml.depends, tags: { extension:ml, file:parser.ml, ocaml, ocamldep, quiet }
+ocamldep.opt -modules parser.ml > parser.ml.depends
+# Target: utils.ml.depends, tags: { extension:ml, file:utils.ml, ocaml, ocamldep, quiet }
+ocamldep.opt -modules utils.ml > utils.ml.depends
+# Target: lexer.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:lexer.cmo, file:lexer.ml, implem, ocaml, quiet }
+ocamlc.opt -c -I /usr/local/lib/ocaml -o lexer.cmo lexer.ml
+# Target: utils.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:utils.cmo, file:utils.ml, implem, ocaml, quiet }
+ocamlc.opt -c -I /usr/local/lib/ocaml -o utils.cmo utils.ml
+# Target: parser.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:parser.cmo, file:parser.ml, implem, ocaml, quiet }
+ocamlc.opt -c -I /usr/local/lib/ocaml -o parser.cmo parser.ml
+# Target: minic.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:minic.cmo, file:minic.ml, implem, ocaml, quiet }
+ocamlc.opt -c -I /usr/local/lib/ocaml -o minic.cmo minic.ml
+# Target: minic.byte, tags: { byte, dont_link_with, extension:byte, file:minic.byte, link, ocaml, program, quiet }
+ocamlc.opt -I /usr/local/lib/ocaml str.cma ast.cmo graph.cmo lexer.cmo utils.cmo parser.cmo minic.cmo -o minic.byte
+# Compilation successful.

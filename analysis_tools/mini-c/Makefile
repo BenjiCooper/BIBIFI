@@ -1,22 +1,22 @@
-TOP = ..
-CC = ocamlc
-DEPENDS = ast.cmo lexer.cmo parser.cmo graph.cmo utils.cmo minic.cmo
 
-all: minic
+OCAMLBUILD = ocamlbuild
+
+SOURCES = lexer.ml parser.ml utils.ml ast.ml graph.ml
+INTERFACE_RESULT = minic.byte
+
+OCAMLLDFLAGS = -g
+PACKS = str
+
+all: $(INTERFACE_RESULT)
 
 clean:
-	@echo “Cleaning directory”
-	-@rm -rf minic
-	-@rm -rf minic.cm[oi]
+	rm -f *.byte
+	rm -f *.native
+	rm -f *.cmi
+	rm -f *.cmo
+	$(OCAMLBUILD) -clean
 
-minic: $(DEPENDS) minic.ml
-	$(CC) -o minic $(DEPENDS)
+interface: $(INTERFACE_RESULT)
 
-minic.cmo: minic.cmi minic.ml ast.cmi graph.cmi parser.cmi utils.cmi
-	$(CC) -o minic.cmo -c minic.ml
-
-minic.cmi: minic.mli ast.cmi graph.cmi parser.cmi utils.cmi
-	$(CC) -o minic.cmi -c minic.mli
-
-ast.cmo ast.cmi: ast.ml
-	$(CC) -o ast -c ast.ml
+$(INTERFACE_RESULT): $(SOURCES) minic.ml
+	$(OCAMLBUILD) $(INTERFACE_RESULT) -pkgs $(PACKS)

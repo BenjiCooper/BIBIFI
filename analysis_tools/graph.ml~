@@ -129,7 +129,7 @@ let rec print_graph {nodes = n; edges = e; head = h; tail = t;} =
     print_int t;
     print_string "\nnodes: ";
     print_int_list n;
-    print_string "\nedges:\n";
+    print_string "\nedges: ";
     print_edges e;
     print_string "\n"
 ;;

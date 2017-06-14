@@ -5,9 +5,9 @@
  * in order to perform various analyses.
  *)
 
-(* This should be done with modules, TODO: talk to Dr. Hicks and ask him to teach you modules please *)
-#use "AST/ast_c.ml"
-#use "../graph.ml"
+open Ast_c
+
+open Graph
 
 (* STATEMENT CONVERSION TO GRAPH *)
 
@@ -25,7 +25,7 @@ let rec contains_break stmt = match stmt with
     | Switch(e,cl) -> let case_to_break c = (match c with
                             Case(e,sl) -> foldl (fun a b -> a || (contains_break b)) false sl
                           | Default(sl) -> foldl (fun a b -> a || (contains_break b)) false sl) in 
-        foldl (fun a b -> a || (case_to_break b)) false cl*)
+        foldl (fun a b -> a || (case_to_break b)) false cl
     | While(e,s) -> contains_break s
     | DoWhile(s,e) -> contains_break s
     | For(e1,e2,e3,s) -> contains_break s
