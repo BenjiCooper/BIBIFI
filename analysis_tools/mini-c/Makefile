@@ -14,6 +14,7 @@ clean:
 	rm -f *.native
 	rm -f *.cmi
 	rm -f *.cmo
+	rm -f *~
 	$(OCAMLBUILD) -clean
 
 interface: $(INTERFACE_RESULT)

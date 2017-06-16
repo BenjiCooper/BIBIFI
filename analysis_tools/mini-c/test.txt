@@ -1,0 +1,20 @@
+head: 0
+tail: 12
+nodes: 0 1 2 6 3 4 5 7 11 8 9 10 12 
+edges:
+source: 0 dest: 1
+source: 1 dest: 2
+source: 6 dest: 7
+source: 2 dest: 3
+source: 5 dest: 2
+source: 2 dest: 6
+source: 3 dest: 4
+source: 4 dest: 5
+source: 11 dest: 12
+source: 7 dest: 8
+source: 7 dest: 10
+source: 9 dest: 11
+source: 10 dest: 11
+source: 8 dest: 9
+
+cyclomatic complexity: 3

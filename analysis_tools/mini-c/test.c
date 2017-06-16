@@ -5,4 +5,7 @@ int main() {
     printf(a);
     a = a+1;
   }
+  if(a == 20) {
+    printf(a);
+  }
 }
